@@ -284,8 +284,6 @@ class multi_recv(ServerThread):
 		self.title_win = curses.newwin(4,80,1,1)
 		self.trk_win.box(0,0)
 		self.freq_win.box(0,0)		
-		#self.trk_win.leaveok(1)
-		#self.freq_win.leaveok(1)
 		curses.start_color()
 		curses.init_pair(1, curses.COLOR_GREEN, curses.COLOR_BLACK)
 		curses.init_pair(2, curses.COLOR_RED, curses.COLOR_BLACK)
@@ -355,7 +353,7 @@ class multi_recv(ServerThread):
 			
 			self.trk_win.erase()
 			self.trk_win.addstr(3,1, "Escuchando satelite: " + self.tracked)
-			self.trk_win.addstr(4,1, "NORAD number: " + norad)
+			self.trk_win.addstr(4,1, "NORAD number: " + str(norad))
 			self.draw_base()
 
 		# need update?
@@ -374,7 +372,7 @@ class multi_recv(ServerThread):
 
 			self.trk_win.erase()
 			self.trk_win.addstr(3,1, "Escuchando satelite: " + self.tracked, curses.A_BOLD)
-			self.trk_win.addstr(4,1, "NORAD Number: " + norad)
+			self.trk_win.addstr(4,1, "NORAD Number: " + str(norad))
 			self.trk_win.addstr(5,1, "Altitud: " + "%.3f" % h + " Km")
 			self.trk_win.addstr(6,1, "Velocidad: " + "%.3f" % s + " Km/s.")
 			self.trk_win.addstr(7,1, "Azimuth: " + "%3d" % int(a) + " º")
@@ -416,7 +414,8 @@ if __name__ == '__main__':
 	(options, args) = parser.parse_args()
 	recv = multi_recv()
 	recv.go()
-	
+	raw_input()	# blocks from exiting
+
 	#end curses
 	clear()
 
