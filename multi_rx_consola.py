@@ -318,7 +318,7 @@ class multi_recv(ServerThread):
 	# creates callback for OSC message with five floats and a string
     	@make_method(None, 'fffffs')
     	def sat_callback(self, path, args):
-        	a, e, h, s, d, idesg = args
+        	a, e, h, s, d, norad = args
 
 		#get name
 		name = path.split("/")[len(path.split("/")) -1]	
@@ -355,7 +355,7 @@ class multi_recv(ServerThread):
 			
 			self.trk_win.erase()
 			self.trk_win.addstr(3,1, "Escuchando satelite: " + self.tracked)
-			self.trk_win.addstr(4,1, "International Designator: " + idesg)
+			self.trk_win.addstr(4,1, "NORAD number: " + norad)
 			self.draw_base()
 
 		# need update?
@@ -374,7 +374,7 @@ class multi_recv(ServerThread):
 
 			self.trk_win.erase()
 			self.trk_win.addstr(3,1, "Escuchando satelite: " + self.tracked, curses.A_BOLD)
-			self.trk_win.addstr(4,1, "International Designator: " + idesg)
+			self.trk_win.addstr(4,1, "NORAD Number: " + norad)
 			self.trk_win.addstr(5,1, "Altitud: " + "%.3f" % h + " Km")
 			self.trk_win.addstr(6,1, "Velocidad: " + "%.3f" % s + " Km/s.")
 			self.trk_win.addstr(7,1, "Azimuth: " + "%3d" % int(a) + " º")
