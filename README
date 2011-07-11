@@ -1,0 +1,23 @@
+Automatic satellite tracker
+---------------------------
+
+Orbitando Satélites Exhibition
+Plataforma Cero Centro de Producción
+LABoral centro de arte 2011
+
+This is a python script for automatic satellite tracking using funcube dongle, 
+gnuradio and a modified version of GPredict with Open Sound Control message
+sending (https://github.com/ladecadence/GPredict---OSC)
+
+The script receives OSC messages from gpredict, with the data of the satellites
+selected in the active module, checking if there's a satellite in the visible 
+sky. If there's one, starts the gnuradio receiver for that satellite (right
+now, FM downlinks and CW beacons are supported) so you can listen them. The
+script does automatic doppler correction for the satellite frequency.
+
+This script can also control the OpenRotor (AZ/EL rotor that can be made in a 
+FabLab) attached to a USB port of the computer running it.
+
+11-07-2011 
+First upload, no O/R control yet.
+
