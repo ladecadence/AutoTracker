@@ -316,7 +316,7 @@ class multi_recv(ServerThread):
 		self.trk_win.refresh()
 	
 	# creates callback for OSC message with five floats and a string
-    	@make_method(None, 'fffffs')
+    	@make_method(None, 'fffffi')
     	def sat_callback(self, path, args):
         	a, e, h, s, d, norad = args
 
